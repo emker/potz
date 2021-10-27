@@ -1,5 +1,4 @@
 #include "ros/ros.h"
-#include "std_msgs/String.h"
 #include "laba2/Message1.h"
 #include <sstream>
 #include <random>
@@ -16,15 +15,17 @@ int main(int argc, char **argv)
   {
     laba2::Message1 msg;
     std::stringstream ss;
-    int x,y;
-    x=rnd();
-    y=rnd();
+    int x;
+    int y;
+
+    x=rnd()%70;
+    y=rnd()%25;
+
     ss << x <<","<<y;
     msg.coord = ss.str();
     ROS_INFO("%s", msg.coord.c_str());
     chatter_pub.publish(msg);
     ros::spinOnce();
-
     loop_rate.sleep();
     ++count;
   }
@@ -32,3 +33,4 @@ int main(int argc, char **argv)
 
   return 0;
 }
+
