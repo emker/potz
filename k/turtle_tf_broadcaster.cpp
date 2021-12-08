@@ -18,7 +18,7 @@ int main(int argc, char** argv){
   if (argc != 2){ROS_ERROR("need turtle name as argument"); return -1;};
   turtle_name = argv[1];
    ros::NodeHandle node;
-   ros::Duration(2.0).sleep();  
+   ros::Duration(3.0).sleep();  
   if (!strcmp(argv[1],"/turtle1")) {
     std::random_device seed_gen;
   std::default_random_engine engine(seed_gen());
