@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(learning_tf)
+project(kurs)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -10,7 +10,7 @@ project(learning_tf)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
-  tf
+  std_msgs
   turtlesim
 )
 
@@ -71,7 +71,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
 #   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
+#   std_msgs
 # )
 
 ################################################
@@ -105,8 +105,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES learning_tf
-#  CATKIN_DEPENDS roscpp rospy tf turtlesim
+#  LIBRARIES kurs
+#  CATKIN_DEPENDS roscpp rospy std_msgs turtlesim
 #  DEPENDS system_lib
 )
 
@@ -123,7 +123,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/learning_tf.cpp
+#   src/${PROJECT_NAME}/kurs.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -134,7 +134,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/learning_tf_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/kurs_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -198,7 +198,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_learning_tf.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_kurs.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
@@ -206,11 +206,9 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(turtle_tf_broadcaster src/turtle_tf_broadcaster.cpp)
-target_link_libraries(turtle_tf_broadcaster ${catkin_LIBRARIES})
+add_executable(listener2 src/listener.cpp)
+target_link_libraries(listener2 ${catkin_LIBRARIES})
 
-add_executable(turtle_tf_listener src/turtle_tf_listener.cpp)
-target_link_libraries(turtle_tf_listener ${catkin_LIBRARIES})
+add_executable(talker2 src/talker.cpp)
+target_link_libraries(talker2 ${catkin_LIBRARIES})
 
-add_executable(turtle_tf_lostlistener src/turtle_tf_lostlistener.cpp)
-target_link_libraries(turtle_tf_lostlistener ${catkin_LIBRARIES})
